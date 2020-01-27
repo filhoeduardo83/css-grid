@@ -1,0 +1,73 @@
+<!-- Esse exemplo mostra como usar grid-template-areas
+e layout responsivo para dispositivos moveis usando @media -->
+<html>
+    <head>
+        <title>CSS Grid 2</title>
+
+        <style>
+            html,
+            body {
+                margin: 20px;
+                height: calc(100% - 40px);
+                background-color: lightgray;
+            }
+
+            header, nav, main, footer {
+                border: solid 5px dodgerblue;
+                background: #fff;
+            }
+
+
+
+            header {
+                grid-area: cabecalho;
+            }
+
+            nav {
+                grid-area: navegacao;
+            }
+            
+            main {
+                grid-area: conteudo;
+            }
+
+            footer {
+                grid-area:rodape;
+            }
+
+            body{
+                display: grid;
+                min-height:100vh;
+                grid-template-columns: 300px 1fr;
+                grid-template-rows: 100px 1fr 100px;
+
+                grid-template-areas:
+                'cabecalho cabecalho'
+                'navegacao conteudo'
+                'rodape rodape';
+            }
+
+            @media(max-width: 700px) {
+                body{
+                    grid-template-columns: 1fr;
+                    grid-template-rows: 80px 1fr 1fr 100px;
+                    grid-template-areas: 
+                        'cabecalho'
+                        'navegacao'
+                        'conteudo'
+                        'rodape';
+                }
+            }
+
+
+        </style>
+    </head>
+
+    <body>
+        <main class="main">Conteúdo</main>
+        <header class="header">Cabeçalho</header> 
+        <footer class="footer">Rodapé</footer>
+        <nav class="nav">Navegação</nav>
+
+    </body>
+</html>
